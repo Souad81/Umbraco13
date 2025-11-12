@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.TeamMember)Model.Content;
+    var teamMemberImage = content.TeamMemberImage is IEnumerable<Umbraco.Cms.Core.Models.MediaWithCrops> images
+        ? images.FirstOrDefault()
+        : null;
+}
+<div class="flex flex-col h-full border-white-100 border-gray">
+    @if (teamMemberImage != null)
+    {
+        <img src="@teamMemberImage.Url()" alt="@content.TeamMemberName" class="w-full object-cover" />
+    }
+
+    <div>
+        <h4 class="font-semibold text-gray-600">@content.TeamMemberName</h4>
+        <p class="text-sm text-gray-400">@content.TeamMemberRole</p>
+    </div>
+</div>

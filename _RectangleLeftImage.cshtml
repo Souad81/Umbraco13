@@ -1,0 +1,54 @@
+@*
+PSEUDOCODE / PLAN (detailed):
+1. This partial will expose a small snippet to render the existing SVG at:
+   - wwwroot/images/Rectangle-left.svg
+2. Provide two safe, accessible rendering options:
+   - <img> element referencing the static file (recommended for simple use).
+   - <object> element for fallback/interactive needs (keeps it external).
+3. Ensure sizing is responsive and constrained to the SVG's height (205px).
+4. Provide minimal CSS scoped to the snippet to avoid global side effects.
+5. Document expected usage in a short Razor comment so callers know how to include it.
+*@
+
+@* Usage:
+   In a Razor Page or View:
+     <partial name="~/Pages/Shared/_RectangleLeftImage.cshtml" />
+   or
+     @await Html.PartialAsync("_RectangleLeftImage")
+*@
+
+@* MARKUP: simple <img> (preferred) with optional <object> alternative *@
+<div class="rectangle-left-component">
+    <!-- Simple img reference to the file in wwwroot/images -->
+    <img src="~/images/Rectangle-left.svg"
+         alt="Decorative rectangle"
+         class="rectangle-left-img" />
+
+    <!-- Alternative: object tag if you need to target inner SVG or allow clicking into SVG document.
+         Uncomment if you need scriptable/interactive SVG access.
+    <object data="~/images/Rectangle-left.svg" type="image/svg+xml" class="rectangle-left-object" aria-label="Decorative rectangle"></object>
+    -->
+</div>
+
+<style>
+    /* Scoped styles for this partial */
+    .rectangle-left-component {
+        display: inline-block;
+        line-height: 0; /* prevent descender gaps under inline images */
+    }
+
+    /* Constrain to original height and scale width proportionally.
+       Adjust height as needed; using max-height keeps it responsive. */
+    .rectangle-left-img,
+    .rectangle-left-object {
+        height: 205px;          /* match SVG's exported height */
+        max-width: 100%;        /* avoid overflow on small viewports */
+        width: auto;
+        display: block;
+    }
+
+    /* Optional: make the image decorative for screen readers if purely visual:
+       - Remove alt text and add aria-hidden="true" where appropriate.
+       Keep meaningful alt text if it carries information.
+    */
+</style>

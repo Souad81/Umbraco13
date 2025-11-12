@@ -1,0 +1,13 @@
+{
+    "name": "umbracocms",
+    "version": "1.0.0",
+    "private": true,
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.1.17",
+        "tailwindcss": "^4.1.17"
+    },
+    "scripts": {
+        "dev": "npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/output.css --watch",
+        "prod": "npx @tailwindcss/cli -i ./wwwroot/css/input.css -o ./wwwroot/css/mini.css --minify"
+    }
+}
