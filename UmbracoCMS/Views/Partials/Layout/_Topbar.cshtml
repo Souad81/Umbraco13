@@ -4,7 +4,8 @@
 
 	var rootContent = Umbraco.ContentAtRoot();
 	var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
-	var contactAddress = siteSettings?.ContactAddress ?? "No contact address available";
+	var contactAddress = siteSettings?.ContactAddress?.ToString() ?? "No contact address available";
+
 }
 
 <div class="bg-primary">

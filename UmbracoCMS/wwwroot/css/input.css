@@ -1,4 +1,6 @@
 ﻿@import "tailwindcss";
+@import "./rte.css";
+@import "./forms.css";
 @tailwind base;
 
 @theme {
@@ -55,3 +57,6 @@ body {
 img {
   @apply w-full h-auto object-cover;
 }
+    .img 2 {
+        @apply flex h-auto flex-cover;
+    }

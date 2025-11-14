@@ -34,7 +34,7 @@
 						<a href="@item.Url()" class="block no-underline">
 							<h4 class="p-[1.5rem] font-semibold text-primary">@item.Name</h4>
 							<img src="@(item.ServiceDetailThumbnail?.FirstOrDefault()?.Url() ?? Url.Content("~/images/Risk-Management.svg"))" alt="@item.Name" class="block w-full h-[220px] object-cover" />
-							<p class="text-sm p-[1.5rem]">@item.ServiceDetailExcerpt</p>
+							<p class="text-sm text-body-text p-[1.5rem]">@item.ServiceDetailExcerpt</p>
 						</a>
 					</div>
 				}
